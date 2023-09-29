@@ -1,5 +1,4 @@
-﻿Imports System.ServiceModel.Configuration
-Imports System.Windows.Forms.VisualStyles.VisualStyleElement
+﻿Imports System.Windows.Forms.VisualStyles.VisualStyleElement
 Imports gsol
 Imports gsol.Web.Components
 Imports MongoDB.Bson
@@ -133,11 +132,11 @@ Public Class Ges003_001_FacturasComerciales
         '                                     Item(CamposFacturaComercial.CA_NUMERO_FACTURA, Texto, longitud_:=40)
         [Set](dbcNumFacturaCOVE, CA_NUMERO_FACTURA, propiedadDelControl_:=PropiedadesControl.Valor)
         '                                     Item(CamposCOVE.CA_NUMERO_COVE, Texto, longitud_:=40)
-        [Set](dbcNumFacturaCOVE, CA_NUMERO_ACUSEVALOR, propiedadDelControl_:=PropiedadesControl.ValueDetail)
+        [Set](dbcNumFacturaCOVE, CA_NUMERO_AcuseValor, propiedadDelControl_:=PropiedadesControl.ValueDetail)
         '                                     Item(CamposFacturaComercial.CA_FECHA_FACTURA, Fecha)
         [Set](icFechaFactura, CA_FECHA_FACTURA)
         '                                     Item(CamposCOVE.CA_FECHA_COVE, Fecha)
-        [Set](icFechaCOVE, CA_FECHA_ACUSEVALOR)
+        [Set](icFechaCOVE, CA_FECHA_AcuseValor)
         '                                     Item(CamposClientes.CA_RAZON_SOCIAL, Texto, longitud_:=120)
         [Set](fbcCliente, CA_RAZON_SOCIAL, propiedadDelControl_:=PropiedadesControl.Text)
         '                                     Item(CamposClientes.CA_TAX_ID, Texto, longitud_:=11)
@@ -702,7 +701,7 @@ Public Class Ges003_001_FacturasComerciales
     Protected Sub dbcNumFacturaCOVE_Click(sender As Object, e As EventArgs)
 
 
-        dbcNumFacturaCOVE.ValueDetail = "Maná"
+        dbcNumFacturaCOVE.ValueDetail = "COVE"
 
         ''Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Internacional
 
@@ -795,108 +794,87 @@ Public Class Ges003_001_FacturasComerciales
 
         '' _icontroladorEmpresas64.ActualizaEmpresa(empresaInternacional_)
 
-        Dim domicilio_ As New Domicilio64 _
-                          With
-                          {
-                           ._iddomicilio = ObjectId.GenerateNewId,
-                           .sec = 1,
-                           .calle = "Río de la Platas",
-                           .numeroexterior = 236,
-                           .numerointerior = 2,
-                           .ciudad = "Veracruz",
-                           .colonia = "Lomas 4",
-                           .codigopostal = "91809",
-                           .entidadfederativa = "Veracruz",
-                           .pais = "México",
-                           .estado = 1,
-                           .archivado = False
-                          }
+        'Dim domicilio_ As New Domicilio64 _
+        '                  With
+        '                  {
+        '                   ._iddomicilio = ObjectId.GenerateNewId,
+        '                   .sec = 1,
+        '                   .calle = "Río de la Platas",
+        '                   .numeroexterior = 236,
+        '                   .numerointerior = 2,
+        '                   .ciudad = "Veracruz",
+        '                   .colonia = "Lomas 4",
+        '                   .codigopostal = "91809",
+        '                   .entidadfederativa = "Veracruz",
+        '                   .pais = "México",
+        '                   .estado = 1,
+        '                   .archivado = False
+        '                  }
 
 
 
         'Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Nacional
 
-        Dim rfcsList As New Rfc64 _
-                        With
-                        {
-                            .idrfc = New ObjectId("650b7977cf6dbc89f4a2d5cc"),
-                            .sec = 1,
-                            .rfc = "ERI660315SX5",
-                            .estado = 1,
-                            .archivado = False
-                        }
+        'Dim rfcsList As New Rfc64 _
+        '                With
+        '                {
+        '                    .idrfc = New ObjectId("650b7977cf6dbc89f4a2d5cc"),
+        '                    .sec = 1,
+        '                    .rfc = "ERI660315SX5",
+        '                    .estado = 1,
+        '                    .archivado = False
+        '                }
 
-        Dim curpList As New Curp64 _
-                        With
-                        {
-                            .idcurp = ObjectId.GenerateNewId,
-                            .sec = 1,
-                            .curp = "RARR920216MVZMSS01",
-                            .estado = 1,
-                            .archivado = False
-                        }
+        'Dim curpList As New Curp64 _
+        '                With
+        '                {
+        '                    .idcurp = ObjectId.GenerateNewId,
+        '                    .sec = 1,
+        '                    .curp = "RARR920216MVZMSS01",
+        '                    .estado = 1,
+        '                    .archivado = False
+        '                }
 
-        Dim regimenFiscal_ As New RegimenFiscal64 _
-                              With
-                              {
-                                .idregimenfiscal = ObjectId.GenerateNewId,
-                                ._sec = 1,
-                                .regimenfiscal = "Contribuyente",
-                                .estado = 1,
-                                .archivado = False
-                              }
-
-        Dim paisDomicilio As New PaisesDomicilios _
-                             With
-                             {
-                                ._idpaisdomicilio = ObjectId.GenerateNewId,
-                                .sec = 1,
-                                .pais = "MEX",
-                                .domicilios = New List(Of Domicilio64) From {domicilio_},
-                                .estado = 1,
-                                .archivado = True
-                             }
+        'Dim regimenFiscal_ As New RegimenFiscal64 _
+        '                      With
+        '                      {
+        '                        .idregimenfiscal = New ObjectId("650b810e6c54a773816c886c"),
+        '                        ._sec = 1,
+        '                        .regimenfiscal = "Contribuyente",
+        '                        .estado = 1,
+        '                        .archivado = False
+        '                      }
 
 
+        'Dim empresaNacional_ As IEmpresaNacional64 = New EmpresaNacional64 _
+        '                                            With
+        '                                            {
+        '                                                 ._id = New ObjectId("650b86da85e44844fdd7c5d7"),
+        '                                                 ._idempresa = 2,
+        '                                                 ._idempresakb = Nothing,
+        '                                                 .razonsocial = "Fomento Económico Mexicano SA DE CV",
+        '                                                 .razonsocialcorto = "FEMSA MANÁ",
+        '                                                 .abreviatura = "FEMSA",
+        '                                                 .nombrecomercial = "FEMSA SA",
+        '                                                 .domicilios = New List(Of Domicilio64) From {domicilio_},
+        '                                                 .girocomercial = Nothing,
+        '                                                 ._idgrupocomercial = Nothing,
+        '                                                 .contactos = Nothing,
+        '                                                 ._idrfc = rfcsList.idrfc,
+        '                                                 .rfc = rfcsList.rfc,
+        '                                                 .rfcs = New List(Of Rfc64) From {rfcsList},
+        '                                                 ._idcurp = curpList.idcurp,
+        '                                                 .curp = curpList.curp,
+        '                                                 .curps = New List(Of Curp64) From {curpList},
+        '                                                 .regimenfiscal = New List(Of RegimenFiscal64) From {regimenFiscal_},
+        '                                                 .tipopersona = IEmpresaNacional64.TiposPersona64.Fisica,
+        '                                                 .archivado = False,
+        '                                                 .estado = 1,
+        '                                                 .abierto = True
+        '                                            }
 
-        Dim empresaNacional_ As IEmpresaNacional64 = New EmpresaNacional64 _
-                                                    With
-                                                    {
-                                                         ._id = ObjectId.GenerateNewId,
-                                                         ._idempresa = 6,
-                                                         ._idempresakb = Nothing,
-                                                         .razonsocial = "COCA COLA SA DE CV",
-                                                         .razonsocialcorto = "FEMSA MANÁ",
-                                                         .abreviatura = "FEMSA",
-                                                         .nombrecomercial = "FEMSA SA",
-                                                         .paises_domicilios = New List(Of PaisesDomicilios) From {paisDomicilio},
-                                                         .girocomercial = Nothing,
-                                                         ._idgrupocomercial = Nothing,
-                                                         .contactos = Nothing,
-                                                         ._idrfc = rfcsList.idrfc,
-                                                         .rfc = rfcsList.rfc,
-                                                         .rfcs = New List(Of Rfc64) From {rfcsList},
-                                                         ._idcurp = curpList.idcurp,
-                                                         .curp = curpList.curp,
-                                                         .curps = New List(Of Curp64) From {curpList},
-                                                         .regimenfiscal = New List(Of RegimenFiscal64) From {regimenFiscal_},
-                                                         .tipopersona = IEmpresaNacional64.TiposPersona64.Fisica,
-                                                         .archivado = False,
-                                                         .estado = 1,
-                                                         .abierto = True
-                                                    }
 
-        Dim tipoEmpresa_ = IControladorEmpresas64.TiposEmpresas.Nacional
-
-        _icontroladorEmpresas64 = New ControladorEmpresas64(tipoEmpresa_)
-
-        '_icontroladorEmpresas64.NuevaEmpresa(empresaNacional_)
-
-        Dim token_ = "COCA COLA SA DE CV"
-
-        Dim busquedaDomicilio = _icontroladorEmpresas64.BuscarDomicilios(6)
-
-        ''Dim busquedaEmpresa_ = _icontroladorEmpresas64.BuscarEmpresas(token_)
+        '_icontroladorEmpresas64 = New ControladorEmpresas64(tipoEmpresa_)
 
         '' Dim pruebaEmpresaNacional = _icontroladorEmpresas64.NuevaEmpresa(empresaNacional_)
 
